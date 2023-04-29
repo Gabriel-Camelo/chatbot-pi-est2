@@ -1,0 +1,20 @@
+<span className="editalhover w-3/4 h-3/4">
+    <div className="bg-green-800 h-5/6 flex items-center justify-center">
+        <img src="/img/Pdf-Icon.svg" alt="Icon PDF" 
+        className="w-16"
+        />
+        <div>
+            <h2 className="text-green-950 mt-3">(Nome Documento)</h2>
+            <button className="ml-36 mt-2 flex items-end justify-end">
+                <img src="/img/Download-Icon.svg" alt="Icon Download"
+                className="w-8 mr-0 "
+                />
+            </button>
+        </div>
+    </div>
+    <button className="w-full h-1/4 bg-footer bottom-0 font-exo2 text-white">
+        {/* <img src="/img/Eye-Icon.svg" alt="Icon Eye"
+        /> */}
+        Visualizar
+    </button>
+</span>
