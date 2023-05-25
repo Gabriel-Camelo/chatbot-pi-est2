@@ -8,6 +8,7 @@ function DialogueBallon(props) {
 
   return (
       <div
+        data-testid="dialog-balloon"
         className={`w-1/2 flex flex-row justify-${(side === "left")?"start":"end"} self-end`}
       >
         <div 
@@ -22,11 +23,11 @@ function DialogueBallon(props) {
         <div
           className={`relative w-4/5 min-h-10 ${ballonColor} rounded-lg z-10`}
         >
-          <p
-            className="p-2 text-xs text-white"
+          <div
+            className="p-2 text-sm text-white"
           >
           {<div dangerouslySetInnerHTML={{ __html: `${text}` }} />}
-          </p>
+          </div>
         </div>
       </div>
   );

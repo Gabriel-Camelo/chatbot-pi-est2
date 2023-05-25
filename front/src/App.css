@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Almarai:wght@700&family=Antic+Didone&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
 
 .divHover .phover{
     display: none;
@@ -36,3 +37,17 @@ span:hover button{
 .buttondown{
     display: block;
 }
+
+.active{
+    background-color: white;
+    color: rgb(12, 75, 12);
+}
+
+.active2{
+    background-color: #000;
+    color: aqua;
+}
+
+
+
+

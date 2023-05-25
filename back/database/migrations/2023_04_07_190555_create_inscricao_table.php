@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('inscricao', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
+            $table->timestamps();
         });
     }
 

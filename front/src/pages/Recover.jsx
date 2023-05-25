@@ -8,10 +8,10 @@ function Recover() {
       className="bg-ground-login w-full h-full bg-cover bg-no-repeat bg-center relative z-0"
     >
       <ReturnButton h="8" w="14" left="left-10" top="top-10" bg="buttom" value="Voltar" color="white" to="/login"/>
-      <div
-        className="bg-white absolute shadow-2xl z-10 flex flex-col items-center
+      <div 
+        className="min-w-login min-h-login max-h-login max-w-login bg-white absolute shadow-2xl z-10 flex flex-col items-center justify-center
         mobile:left-1/10 mobile:top-1/4 mobile:w-4/5 mobile:h-1/2
-        desktop:left-3/10 desktop:top-1/5 desktop:w-2/5 desktop:h-3/5
+        desktop:left-middle-login desktop:top-1/5 desktop:w-1/4 desktop:h-1/2
         "
       >
         <form
@@ -27,11 +27,15 @@ function Recover() {
           />
         </div>
           <p
-          className="mb-4 text-sm text-red-500"
+            className="mb-4 text-sm text-red-500"
           >
             Por favor, nos informe o seu email de acesso para que possamos recuperar sua senha
           </p>
-          <DataField label="Email" type="email" holder="Digite seu email"/>
+          <DataField 
+            label="Email" 
+            type="email" 
+            holder="Digite seu email"
+          />
         </form>
         <input
           className="bg-buttom text-white mt-4 cursor-pointer

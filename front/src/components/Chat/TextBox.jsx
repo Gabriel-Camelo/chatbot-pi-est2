@@ -6,7 +6,7 @@ function TextBox(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     setValor("");
-    props.setUserMSG({'type':'user', 'text': valor});
+    props.setUserMSG({text: valor});
   }
 
   const handleChange = (event) => {
@@ -33,7 +33,7 @@ function TextBox(props) {
                 onChange={handleChange}
                 type="text" 
                 id="first_name" 
-                class="bg-transparent outline-none caret-black border-0 text-gray-900 text-sm w-full p-2.5" 
+                className="bg-transparent outline-none caret-black border-0 text-gray-900 text-sm w-full p-2.5" 
                 placeholder="Por favor, digite aqui para interagir com o chat" 
                 required
                 />

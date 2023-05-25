@@ -8,10 +8,17 @@ function ReturnButton({h, w, left, top, bg, color, value, to}) {
       to={to}
     >
       <div
-        className={`absolute ${top} ${left} h-${h} w-${w}`}
+        className={`absolute ${top} ${left} h-${h} w-auto bg-${bg} flex flex-row p-1`}
       >
+        <img
+          className="w-10"
+          src="/img/returnIcon.svg"
+          alt="Icone de retorno"
+        >
+
+        </img>
         <input
-          className={`h-full w-full bg-${bg} text-${color} cursor-pointer`}
+          className={`h-full w-full text-${color} cursor-pointer`}
           type="button"
           value={value}
         />

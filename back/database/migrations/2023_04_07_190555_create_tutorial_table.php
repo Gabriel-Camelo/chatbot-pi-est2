@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tutorial', function (Blueprint $table) {
             $table->increments('id');
             $table->string('arquivo');
+            $table->timestamps();
         });
     }
 
