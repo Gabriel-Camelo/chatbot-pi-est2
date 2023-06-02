@@ -1,7 +1,37 @@
-
 import ReactModal from 'react-modal';
+import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import { RefreshContext } from '../../contexts/RefreshContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
-const PopupAlert = ({ isOpen, onClose }) => {
+const PopupAlert = ({ isOpen, onClose, id, type }) => {
+  const [ idValue, setIdValue ] = useState(null);
+  const [ remove, setToRemove ] = useState(false);
+
+  const { refresh, setRefresh } = useContext(RefreshContext);
+  const { token } = useContext(AuthContext);
+
+  
+  useEffect(() => {
+    if (remove) {
+      axios.delete(`http://localhost:8000/api/${type}/${idValue}`, {headers: {
+        'Authorization': `Bearer ${token.access_token}`
+    }})
+          .then(response => {
+            setRefresh(!refresh);
+          })
+          .catch(error => console.error(error));
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [remove]);
+
+  useEffect(() => {
+    if (id !== undefined) {
+      setIdValue(id)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
   return (
     <ReactModal
       isOpen={isOpen}
@@ -43,10 +73,14 @@ const PopupAlert = ({ isOpen, onClose }) => {
       <div className=' w-full h-2/6 flex justify-around font-roboto font-extrabold text-white pt-4'>
         <button className='w-2/6 bg-redfooter h-6'
           onClick={onClose}
-          >NÃO</button>
+        >
+          NÃO
+        </button>
         <button className='w-2/6 bg-footer h-6'
-          onClick={onClose}
-          >SIM</button>
+          onClick={() => setToRemove(true)}
+        >
+          SIM
+        </button>
 
         </div>
     </ReactModal>

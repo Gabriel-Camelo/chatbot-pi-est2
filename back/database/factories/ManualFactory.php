@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Inscricao>
  */
-class InscricaoFactory extends Factory
+class ManualFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +19,8 @@ class InscricaoFactory extends Factory
     {
         return [
             'id'=>rand(1,10000),
-            'nome' => fake()->name(),
+            'arquivo' => fake()->name(),
+            'titulo' => fake()->name(),
         ];
     }
 }

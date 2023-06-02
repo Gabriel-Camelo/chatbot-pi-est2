@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import FrameEdital from "../components/FrameEdital";
+import React, { useContext, useEffect, useState } from "react";
+import FrameManual from "../components/FrameManual";
 import Video from "../components/Video";
 import NavBar from "../components/NavBar";
 import Background from "../components/Background";
-
+import axios from "axios";
 
 function VidAndImages(){
-    const [ docs, setDocs ] = useState({docs: [
-        <FrameEdital document="Permanencia 2023.1"/>,
-        <FrameEdital document="Permanencia 2023.2"/>,
-        <FrameEdital document="Permanencia 2023.1"/>,
-        <FrameEdital document="Permanencia 2023.2"/>,
-        <FrameEdital document="Permanencia 2023.1"/>,
-        <FrameEdital document="Permanencia 2023.2"/>,
-        <FrameEdital document="Permanencia 2023.1"/>,
-        <FrameEdital document="Permanencia 2023.2"/>,
-    ], videos: [
-        <Video link="https://www.youtube.com/embed/wjEzE6HSgWo" description="teste"/>,
-        <Video link="https://www.youtube.com/embed/wjEzE6HSgWo" description="teste"/>,
-        <Video link="https://www.youtube.com/embed/wjEzE6HSgWo" description="teste"/>,
-        <Video link="https://www.youtube.com/embed/wjEzE6HSgWo" description="teste"/>,
-        <Video link="https://www.youtube.com/embed/wjEzE6HSgWo" description="teste"/>,
-        <Video link="https://www.youtube.com/embed/wjEzE6HSgWo" description="teste"/>,
-    ]})
+    const [ docs, setDocs ] = useState({ docs: [], videos: [] });
 
     const [activeTab, setActiveTab] = useState("videos");
+
+    useEffect(() => {
+
+        axios.get('http://localhost:8000/api/videos')
+        .then(response => updateVideos(response.data.map((element) => <Video key={element.id} link={element.link} description={element.titulo}/>)))
+        .catch(error => console.log(error));
+
+        axios.get('http://localhost:8000/api/manuais')
+        .then(response => updateDocs(response.data.map((element) => <FrameManual key={element.id} id={element.id} document={element.titulo} />)))
+        .catch(error => console.log(error));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const updateVideos = (newVideos) => setDocs(prevState => ({...prevState, videos: newVideos}));
+    const updateDocs = (newManuals) => setDocs(prevState => ({...prevState, docs: newManuals}));
 
     return (
         <>
@@ -77,22 +77,22 @@ function VidAndImages(){
                             </button>
                         </div>
                         <div //Documentos
-                            className={`w-full grid min-h-centralPanel
+                            className={`w-full min-h-centralPanel
                             desktop:overflow-auto desktop:max-h-centralPanel
-                            mobile:max-h-none mobile:pb-16
+                            mobile:max-h-none mobile:pb-16 text-center
 
-                            ${docs.docs.length > 0 || docs.videos.length > 0 ? 'mobile:grid-cols-1 desktop:grid-cols-2' : 'text-center flex justify-center'}`}
+                            ${(docs.docs.length > 0 && activeTab === 'manuals') || (docs.videos.length > 0 && activeTab === 'videos') ? 'grid mobile:grid-cols-1 desktop:grid-cols-2' : 'text-center flex justify-center'}`}
                         >                            
-                            {docs.docs.length > 0 && activeTab === 'videos' && docs.docs}
-                            {docs.videos.length > 0 && activeTab === 'manuals' && docs.videos}
-                            {docs.docs.length === 0 && activeTab === 'videos' &&
+                            {docs.docs.length > 0 && activeTab === 'manuals' && docs.docs}
+                            {docs.videos.length > 0 && activeTab === 'videos' && docs.videos}
+                            {docs.docs.length === 0 && activeTab === 'manuals' &&
                                 <p 
                                     className="pt-5 text-letter"
                                 >
-                                    Nenhum video disponível no momento
+                                    Nenhum manual disponível no momento
                                 </p>    
                             }
-                            {docs.videos.length === 0 && activeTab === 'manuals' && 
+                            {docs.videos.length === 0 && activeTab === 'videos' && 
                                 <p 
                                     className="pt-5 text-letter"
                                 >

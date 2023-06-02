@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 
-function FrameEdital({document, id}){
+function FramManual({document, id}){
     const [ idValue, setIdValue ] = useState(null);
     const [download, setDownload] = useState(null);
     const [view, setView] = useState(null);
@@ -15,7 +15,7 @@ function FrameEdital({document, id}){
 
     useEffect(() => {
         if (idValue !== null) {
-            axios.get(`http://localhost:8000/api/editais/${idValue}`, {responseType: 'blob'})
+            axios.get(`http://localhost:8000/api/manuais/${idValue}`, {responseType: 'blob'})
             .then(response => {
                 const blob = new Blob([response.data], { type: 'application/pdf' });
                 setDownload(blob);
@@ -62,7 +62,7 @@ function FrameEdital({document, id}){
                         className="flex"
                     >
                         <div 
-                            className="w-full flex justify-end items-end"
+                            className="w-full flex justify-end items-end cursor-pointer"
                         >
                         {download && (
                             <a 
@@ -94,4 +94,4 @@ function FrameEdital({document, id}){
     )
 }
 
-export default FrameEdital;
+export default FramManual;

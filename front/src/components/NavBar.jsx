@@ -16,7 +16,7 @@ function NavBar(){
             >
                 <NavLink 
             
-                activeClassName="active"
+                activeclassname="active"
                 to="/"           
                 className="w-32 h-8 flex items-center justify-center text-white" 
                 > 
@@ -25,7 +25,7 @@ function NavBar(){
                 </NavLink>
 
                 <NavLink 
-                activeClassName="active"
+                activeclassname="active"
                 to="/sobre" 
                 className="w-32 h-8 flex items-center justify-center text-white" 
                 >

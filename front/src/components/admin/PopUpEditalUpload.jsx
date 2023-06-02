@@ -1,16 +1,64 @@
 import ReactModal from 'react-modal';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
-const PopUpUpload = ({ isOpen, onClose }) => {
+const PopUpEditalUpload = ({ isOpen, onClose }) => {
+    const [text, setText] = useState(null);
+    const [file, setFile] = useState(null);
+    const [ message, setMessage ] = useState(null);
 
-    const [selectedOption, setSelectedOption] = useState('');
 
-    const handleChange = (event) => {
-        setSelectedOption(event.target.value);
+    const [fileName, setFileName] = useState('--');
+    const { token } = useContext(AuthContext);
+
+
+    const [ post, setPost ] = useState(false);
+
+    useEffect(() => {
+      if (text !== null && post && file) {
+        const formData = new FormData();
+        formData.append('arquivo', file);
+        formData.append('titulo', text);
+        axios.post('http://localhost:8000/api/editais', formData, {headers: {
+          'Authorization': `Bearer ${token.access_token}`
+      }})
+        .then((response) => {
+          console.log(response.data);
+          setMessage(response.data.message);
+        })
+        .then(() => setTimeout(() => {
+          resetInputs();
+        }, 4000))
+        .catch(error => console.error(error));
+      }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [post]);
+
+    const handleCancel = (event) => {
+      resetInputs();
+      onClose();
     };
 
-    const [text, setText] = useState('');
+    const handlePost = () => {
+      setPost(true);
+    };
+
+    const resetInputs = () => {
+      setText(null);
+      setPost(false);
+      setFileName("--");
+      setMessage(null);
+    }
+
+    const handleFileChange = (event) => {
+      const selectedFile = event.target.files[0];
+      setFile(selectedFile);
+
+      const selectedFileName = selectedFile ? selectedFile.name : 'SELECIONE O ARQUIVO...';
+      setFileName(selectedFileName);
+    };
 
     const handleChangeText = (event) => {
         setText(event.target.value);
@@ -37,6 +85,7 @@ const PopUpUpload = ({ isOpen, onClose }) => {
           background: 'white',
           borderRadius: '4px',
           padding: '0px',
+          margin: '0px',
           maxWidth: '80vw',
           maxHeight: '65vh',
           width: '100%',
@@ -50,14 +99,14 @@ const PopUpUpload = ({ isOpen, onClose }) => {
         className='bg-green-600 w-full h-9 flex items-center justify-center text-white font-roboto font-bold text-lg'
       >
         <h1>
-          POSTE O MATERIAL
+          POSTAR UM EDITAL
         </h1>
       </div>
       <div 
         className='flex items-center justify-center flex-col w-full h-full text-lg'
       >
        <div 
-        className='w-full h-1/5 flex flex-row'
+        className='w-full h-1/5 flex flex-row mb-5'
       >
             <div 
               className='h-full flex items-center justify-end
@@ -65,15 +114,15 @@ const PopUpUpload = ({ isOpen, onClose }) => {
               desktop:text-xl desktop:w-2/12
               '
             >
-                Descrição:
+                Título:
             </div>
             <div 
               className='flex items-center justify-center w-10/12 h-full'
             >
                 <form 
-                  className='w-full h-full flex items-center justify-center'
+                  className='w-full h-2/5 flex items-center justify-center'
                 >
-                   <textarea 
+                   <input 
                     type='text'                         
                     value={text}
                     onChange={handleChangeText}
@@ -83,72 +132,19 @@ const PopUpUpload = ({ isOpen, onClose }) => {
             </div>
         </div> 
 
-
-
-        <div 
-          className='w-full h-1/5 flex flex-row'
+        <div
+          className='mb-10'
         >
-            <div 
-              className='h-full flex items-center justify-end
-              mobile:w-8/12 mobile:text-sm
-              desktop:w-4/12 desktop:text-xl              
-              '
-            >
-                Tipo de material:
-            </div>
-            <div 
-              className='flex items-center justify-start w-9/12 '
-            >
-                <form 
-                  className='pl-6
-                  mobile:text-sm
-                  desktop:text-xl 
-                  '
-                >
-                    <input 
-                      type='radio' 
-                      name="option" 
-                      value="option1"
-                      checked={selectedOption === 'option1'}
-                      onChange={handleChange}
-                    >
-                    </input>
-                    <label 
-                      className='pl-4'
-                    >
-                      Manual
-                    </label> <br/>
-
-                    <input 
-                      type='radio' 
-                      name="option" 
-                      value="option2"
-                      checked={selectedOption === 'option2'}
-                      onChange={handleChange}
-                    >
-                    </input>
-                    <label 
-                      className='pl-4'
-                    >
-                      Vídeo
-                    </label> <br/>
-
-                    <input 
-                      type='radio' 
-                      name="option" 
-                      value="option3"
-                      checked={selectedOption === 'option3'}
-                      onChange={handleChange}
-                    >
-                    </input>
-                    <label 
-                      className='pl-4'
-                    >
-                      Edital
-                    </label>
-                </form>
-            </div>
+          <p
+            className='text-black'
+          >
+            Selecionado: {fileName}
+          </p>
         </div>
+
+
+
+        
         <div 
           className='w-full h-2/5 flex justify-center -mt-2'
         >
@@ -161,24 +157,33 @@ const PopUpUpload = ({ isOpen, onClose }) => {
                     >
                     </img>
                 </div>
+                
                 <div 
                   className='flex flex-col items-center'
                 >
+                <div
+                  className='w-full flex justify-center items-end'
+                >
+                  <p
+                    className='text-green-500 desktop:text-xl mobile:text-sm'
+                  >
+                    {message}
+                  </p>
+                </div>
                     <h3 
                       className=' text-green-800 text-base mb-2'
                     >
-                      Arraste e solte os arquivos até aqui ou
+                      Clique abaixo para selecionar um arquivo
                     </h3>
                    <form>
                         <input 
                           type="file" 
-                          id="upload" 
-                          class="file-upload" 
+                          id="upload"
                           className='hidden' 
+                          onChange={handleFileChange}
                         />
                         <label 
-                          for="upload" 
-                          class="custom-file-upload" 
+                          htmlFor="upload"
                           className='flex cursor-pointer bg-green-600 text-white rounded-sm h-8 w-48 justify-center items-center text-sm font-semibold hover:bg-green-500'
                         >
                           SELECIONE O ARQUIVO...
@@ -188,20 +193,21 @@ const PopUpUpload = ({ isOpen, onClose }) => {
                 </div>
             </div>
         </div>
+        
         <div 
-          className=' w-full h-8 flex justify-around font-roboto font-extrabold text-white mb-2'
+          className='absolute bottom-0 w-full h-8 flex justify-around font-roboto font-extrabold text-white'
         >
             <button 
-              className='w-2/6 bg-redfooter h-7'
-              onClick={onClose}
+              className='w-2/4 bg-redfooter h-7'
+              onClick={handleCancel}
             >
-              CANCELAR
+              VOLTAR
             </button>
             <button 
-              className='w-2/6 bg-footer h-7'
-              onClick={onClose}
+              className='w-2/4 bg-footer h-7'
+              onClick={handlePost}
             >
-              SALVAR
+              POSTAR
             </button>
 
         </div>
@@ -212,4 +218,4 @@ const PopUpUpload = ({ isOpen, onClose }) => {
   );
 };
 
-export default PopUpUpload;
+export default PopUpEditalUpload;

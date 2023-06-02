@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Background from "../components/Background";
 import FrameEdital from "../components/FrameEdital";
 import NavBar from "../components/NavBar";
+import axios from "axios";
 
 function Edital(){
-    const [ docs, setDocs ] = useState([
-        <FrameEdital document="teste" ></FrameEdital>,
-        <FrameEdital document="teste" ></FrameEdital>, 
-        <FrameEdital document="teste" ></FrameEdital>, 
-        <FrameEdital document="teste" ></FrameEdital>,
-        <FrameEdital document="teste" ></FrameEdital>,
-        <FrameEdital document="teste" ></FrameEdital>, 
-        <FrameEdital document="teste" ></FrameEdital>, 
-        <FrameEdital document="teste" ></FrameEdital>,
-        <FrameEdital document="teste" ></FrameEdital>,
-        <FrameEdital document="teste" ></FrameEdital>, 
-        <FrameEdital document="teste" ></FrameEdital>, 
-        <FrameEdital document="teste" ></FrameEdital>,  
+    const [ docs, setDocs ] = useState([  
     ])
+
+    useEffect(() => {
+
+        axios.get('http://localhost:8000/api/editais')
+        .then(response => updateDocs(response.data.map((element) => <FrameEdital key={element.id} id={element.id} document={element.titulo} />)))
+        .catch(error => console.log(error));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    const updateDocs = (newManuals) => setDocs(newManuals);
 
     return (
         <>

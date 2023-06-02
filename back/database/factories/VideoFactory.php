@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Questao>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tutorial>
  */
-class QuestaoFactory extends Factory
+class VideoFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +19,8 @@ class QuestaoFactory extends Factory
     {
         return [
             'id'=>rand(1,10000),
-            'pergunta' => fake()->name(),
-            'proximos' => fake()->name(),
+            'link' => fake()->name(),
+            'titulo' => fake()->name(),
         ];
     }
 }

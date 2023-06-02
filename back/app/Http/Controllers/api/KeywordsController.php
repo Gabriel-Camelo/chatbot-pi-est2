@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Question;
+use App\Models\Pergunta;
 use Illuminate\Database\Eloquent\Collection;
-use Mockery\Undefined;
 
 class KeywordsController extends Controller
 {
@@ -18,7 +17,7 @@ class KeywordsController extends Controller
 
         foreach($wordsArray as $word) {
             if  (strlen($word) > 1) {
-                $search = Question::where('pergunta','like', '%'.$word.'%')
+                $search = Pergunta::where('pergunta','like', '%'.$word.'%')
                                     ->select('pergunta', 'resposta')
                                     ->get();
 

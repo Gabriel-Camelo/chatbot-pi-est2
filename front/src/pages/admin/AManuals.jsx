@@ -1,17 +1,39 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AMenu from "../../components/admin/AMenu";
 import Background from "../../components/Background";
 import Exit from "../../components/admin/Exit";
 import ManagementManuals from "../../components/admin/ManagementManuals";
 import SessionProtect from "../../components/Login/SessionProtect";
+import { RefreshContext } from "../../contexts/RefreshContext";
+import axios from "axios";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function AManuals(){
-    const [ docs, setDocs ] = useState([
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,       
+    const [ docs, setDocs ] = useState([ 
     ])
+
+    const { refresh } = useContext(RefreshContext);
+
+    useEffect(() => {
+
+        axios.get('http://localhost:8000/api/manuais')
+        .then(response => updateDocs(response.data.map((element) => <ManagementManuals type={"manuais"} key={element.id} unique={element.id} document={element.titulo}/>)))
+        .catch(error => console.log(error));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+
+        axios.get('http://localhost:8000/api/manuais')
+        .then(response => updateDocs(response.data.map((element) => <ManagementManuals type={"manuais"} key={element.id} unique={element.id} document={element.titulo}/>)))
+        .catch(error => console.log(error));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [refresh]);
+
+    const updateDocs = (newDocs) => setDocs(newDocs);
+
 
     return (
         <>

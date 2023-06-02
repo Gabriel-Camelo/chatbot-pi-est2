@@ -24,7 +24,7 @@ function Chat () {
   
   //Consultar mensagem de saudação
   useEffect(() => {
-    axios.get('http://localhost:8000/api/hello')
+    axios.get('http://localhost:8000/api/init')
     .then(response => setHello((response.data)))
     .catch(error => {
       setConversation([...conversation, errorGen()]);
@@ -42,7 +42,7 @@ function Chat () {
   //Consultar perguntas respectivas às palavras chave
   useEffect(() => {
     if (search) {
-      axios.get('http://localhost:8000/api/keywords/'+userMSG.text)
+      axios.get('http://localhost:8000/api/chat/'+userMSG.text)
     .then(response => {
       if (response.data.length === 0) {
         setConversation([...conversation, dialogueGen("robot", "Acabei não encontrando nada relacionado a sua descrição. Poderia dar mais informações?")]);

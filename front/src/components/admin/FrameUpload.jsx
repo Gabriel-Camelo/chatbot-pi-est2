@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import PopUpUpload from './PopUpUpload';
+import PopUpManualUpload from './PopUpManualUpload';
+import PopUpVideoUpload from './PopUpVideoUpload';
+import PopUpEditalUpload from './PopUpEditalUpload';
 
 
 function FrameUpload(props) {
@@ -39,7 +41,15 @@ function FrameUpload(props) {
             </div>
             <p className="phover bg-footer">Postar</p>
           </button>
-          <PopUpUpload isOpen={editOpen} onClose={fecharEdit} />
+          {tittle==='Vídeos' &&
+            <PopUpVideoUpload isOpen={editOpen} onClose={fecharEdit}/>
+          }
+          {tittle==="Manuais" &&
+            <PopUpManualUpload isOpen={editOpen} onClose={fecharEdit} />
+          }
+          {tittle==="Editais" &&
+            <PopUpEditalUpload isOpen={editOpen} onClose={fecharEdit} />
+          }
       </div>
   );
 }

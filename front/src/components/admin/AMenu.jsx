@@ -16,7 +16,7 @@ function AMenu(){
             "
             >
                 <NavLink 
-                activeClassName="active"
+                activeclassname="active"
                 to="/admin/"           
                 className="w-32 h-8 flex items-center justify-center text-white" 
                 > 
@@ -25,7 +25,7 @@ function AMenu(){
                 </NavLink>
 
                 <NavLink 
-                activeClassName="active"
+                activeclassname="active"
                 to="/admin/about" 
                 className="w-32 h-8 flex items-center justify-center text-white" 
                 >

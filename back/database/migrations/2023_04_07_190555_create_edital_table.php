@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('edital', function (Blueprint $table) {
             $table->increments('id');
             $table->string('arquivo');
+            $table->string('titulo');
             $table->timestamps();
         });
     }

@@ -7,8 +7,6 @@ import FrameAdmin from "../../components/admin/FrameAdmin";
 import SessionProtect from "../../components/Login/SessionProtect";
 import FrameUpload from "../../components/admin/FrameUpload";
 
-
-
 function AHome(){
     const [activeTab, setActiveTab] = useState("edit");
       
@@ -95,7 +93,7 @@ function AHome(){
                                             src="/img/admin/icon-documentAdmin.png" 
                                             alt="Redirecionamento edital" 
                                             className="w-20 object-cover mt-2" 
-                                            tittle="Edital" 
+                                            tittle="Editais" 
                                             to="/admin/edicts"
                                         />
                                         <FrameAdmin 
@@ -124,7 +122,7 @@ function AHome(){
                                         src="/img/admin/icon-documentAdmin.png" 
                                         alt="Redirecionamento edital" 
                                         className="w-20 object-cover mt-2" 
-                                        tittle="Edital"
+                                        tittle="Editais"
                                     />
                                     <FrameUpload 
                                         src="/img/admin/video-icon.png" 

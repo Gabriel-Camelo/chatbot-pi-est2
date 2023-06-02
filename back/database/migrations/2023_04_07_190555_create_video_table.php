@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fluxo', function (Blueprint $table) {
+        Schema::create('video', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('arquivo');
+            $table->string('link');
+            $table->string('titulo');
             $table->timestamps();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fluxo');
+        Schema::dropIfExists('video');
     }
 };

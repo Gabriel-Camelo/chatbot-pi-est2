@@ -1,29 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AMenu from "../../components/admin/AMenu";
 import Background from "../../components/Background";
 import Exit from "../../components/admin/Exit";
-import ManagementManuals from "../../components/admin/ManagementManuals";
 import SessionProtect from "../../components/Login/SessionProtect";
+import axios from "axios";
+import { RefreshContext } from "../../contexts/RefreshContext";
+import ManagementEdicts from "../../components/admin/ManagementEdicts";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function AEditals(){
-    const [ docs, setDocs ] = useState([
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>, 
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>, 
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,
-        <ManagementManuals document="teste"></ManagementManuals>,    
+    const [ docs, setDocs ] = useState([ 
     ])
+
+    const { refresh } = useContext(RefreshContext);
+
+    useEffect(() => {
+
+        axios.get('http://localhost:8000/api/editais')
+        .then(response => updateDocs(response.data.map((element) => <ManagementEdicts type={"editais"} key={element.id} unique={element.id} document={element.titulo}/>)))
+        .catch(error => console.log(error));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+
+        axios.get('http://localhost:8000/api/editais')
+        .then(response => updateDocs(response.data.map((element) => <ManagementEdicts type={"editais"} key={element.id} unique={element.id} document={element.titulo}/>)))
+        .catch(error => console.log(error));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [refresh]);
+
+    const updateDocs = (newDocs) => setDocs(newDocs);
 
     return (
         <>

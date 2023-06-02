@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Question;
-
+use App\Models\Pergunta;
 class ChatController extends Controller
 {
 
-    public function hello()
+    public function init()
     {
-        return Question::where('pergunta','hello')->select('resposta')->firstOrFail();
+        return Pergunta::where('pergunta','init')->select('resposta')->firstOrFail();
     }
 }

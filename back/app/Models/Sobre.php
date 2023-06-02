@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class About extends Model
+class Sobre extends Model
 {
     use HasFactory;
     protected $table = 'sobre';
     protected $fillable =
     [
         'id',
-        'arquivo'
+        'mensagem',
     ];
 }

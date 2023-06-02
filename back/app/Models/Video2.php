@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Edital extends Model
+class Video2 extends Model
 {
     use HasFactory;
-    protected $table = 'edital';
+    protected $table = 'video2';
     protected $fillable =
     [
         'id',

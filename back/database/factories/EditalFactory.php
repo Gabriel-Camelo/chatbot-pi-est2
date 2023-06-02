@@ -20,6 +20,7 @@ class EditalFactory extends Factory
         return [
             'id'=>rand(1,10000),
             'arquivo' => fake()->name(),
+            'titulo' => fake()->name(),
         ];
     }
 }

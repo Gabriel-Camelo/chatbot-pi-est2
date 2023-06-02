@@ -10,7 +10,7 @@ import Chat from './pages/Chat';
 import Login from './pages/Login';
 import Recover from './pages/Recover';
 import Edital from './pages/Edital';
-import VidAndImage from './pages/VidAndImage';
+import Videos from './pages/Videos';
 
 // Telas de Adminn
 
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         },
         {
           path: "/home/starts",
-          element: <VidAndImage/>
+          element: <Videos/>
         },
         {
           path: "/admin/manuals",

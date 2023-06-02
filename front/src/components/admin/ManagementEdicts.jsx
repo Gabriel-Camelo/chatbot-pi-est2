@@ -1,51 +1,63 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from 'react';
+import PopupAlert from './PopupAlert';
+import PopupEdit from './PopupEdit';
+import axios from 'axios';
 
-
-function FrameEdital({document, id}){
+function ManagementEdicts({ document, unique }){
     const [ idValue, setIdValue ] = useState(null);
     const [download, setDownload] = useState(null);
-    const [view, setView] = useState(null);
 
     useEffect(() => {
-        if (id !== undefined) {
-            setIdValue(id)
+        if (unique !== undefined) {
+            setIdValue(unique)
         }
-    }, [id]);
+    }, [unique]);
 
     useEffect(() => {
         if (idValue !== null) {
-            axios.get(`http://localhost:8000/api/editais/${idValue}`, {responseType: 'blob'})
+            axios.get(`http://localhost:8000/api/manuais/${idValue}`)
             .then(response => {
                 const blob = new Blob([response.data], { type: 'application/pdf' });
                 setDownload(blob);
-                setView(URL.createObjectURL(blob));
             })
             .catch((error) => console.log(error));
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [idValue]);
-    
-    const handleView = () => {
-        window.open(view, '_blank');
+
+    //PopUp Alert
+    const [modalOpen, setModalOpen] = useState(false);
+    const handleOpenModal = () => {
+      setModalOpen(true);
+    };
+    const handleCloseModal = () => {
+      setModalOpen(false);
+    };
+
+    //PopUp Edit
+
+    const [editOpen, setEditOpen] = useState(false);
+    const abrirEdit = () => {
+        setEditOpen(true);
+    }
+    const fecharEdit = () => {
+        setEditOpen(false);
     }
 
     return(
         <div 
-            className="h-40 m-auto flex items-center justify-center
-            mobile:w-90c
-            desktop:w-4/5
-            "
+            className="h-40 w-full m-auto flex items-center justify-center"
         > 
         <span 
-            className="editalhover w-3/4 h-3/4"
+            className="editalhover w-4/5 h-4/6"
         >
             <div 
                 className="bg-green-400 h-5/6 flex items-center justify-center"
             >
                 <div>
                     <img 
-                        src="/img/Pdf-Icon.svg" alt="Icon PDF"
+                        src="/img/Pdf-Icon.svg" 
+                        alt="Icon PDF"
                         className="w-16"
                     />
                 </div>
@@ -82,16 +94,39 @@ function FrameEdital({document, id}){
                 </div>
 
             </div>
-            <button 
-                onClick={handleView}
-                className="w-full h-1/4 bg-footer bottom-0 font-exo2 text-white"
+            <div 
+                className="flex flex-row h-8"
             >
-                Visualizar
-            </button>
+                <button 
+                    className="w-full bg-redfooter bottom-0 font-exo2 text-white"
+                    onClick={handleOpenModal}
+                >
+                    Remover
+                </button>
+                <button
+                    onClick={abrirEdit} 
+                    className="w-full bg-footer bottom-0 font-exo2 text-white"
+                >                 
+                    Editar
+                </button>
+
+                <PopupAlert 
+                    isOpen={modalOpen} 
+                    onClose={handleCloseModal}
+                    id={idValue}
+                    type={"editais"}
+                />
+                <PopupEdit 
+                    isOpen={editOpen} 
+                    onClose={fecharEdit} 
+                    id={idValue}
+                    type={["dadoseditais", "editais"]}
+                />
+            </div>
         </span>
 
     </div>
     )
 }
 
-export default FrameEdital;
+export default ManagementEdicts;

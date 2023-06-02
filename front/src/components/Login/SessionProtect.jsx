@@ -7,7 +7,7 @@ function SessionProtect() {
 
   useEffect(() => {
       if (!token.access_token || token.access_token === 'denied')
-      navigate('/login');
+        navigate('/login');
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 

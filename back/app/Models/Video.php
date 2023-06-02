@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Flux extends Model
+class Video extends Model
 {
     use HasFactory;
-    protected $table = 'fluxo';
+    protected $table = 'video';
     protected $fillable =
     [
         'id',
-        'arquivo'
+        'link',
+        'titulo',
     ];
 }
