@@ -96,7 +96,7 @@ const PopUpEditalUpload = ({ isOpen, onClose }) => {
     >
 
       <div 
-        className='bg-green-600 w-full h-9 flex items-center justify-center text-white font-roboto font-bold text-lg'
+        className='bg-green-600 w-full h-9 flex items-center justify-center text-white font-exo2 font-bold text-lg'
       >
         <h1>
           POSTAR UM EDITAL
@@ -109,7 +109,7 @@ const PopUpEditalUpload = ({ isOpen, onClose }) => {
         className='w-full h-1/5 flex flex-row mb-5'
       >
             <div 
-              className='h-full flex items-center justify-end
+              className='h-full flex items-center justify-end font-exo2
               mobile:text-sm mobile:w-3/12
               desktop:text-xl desktop:w-2/12
               '
@@ -136,7 +136,7 @@ const PopUpEditalUpload = ({ isOpen, onClose }) => {
           className='mb-10'
         >
           <p
-            className='text-black'
+            className='text-black font-roboto'
           >
             Selecionado: {fileName}
           </p>
@@ -165,13 +165,13 @@ const PopUpEditalUpload = ({ isOpen, onClose }) => {
                   className='w-full flex justify-center items-end'
                 >
                   <p
-                    className='text-green-500 desktop:text-xl mobile:text-sm'
+                    className='text-green-500 desktop:text-xl mobile:text-sm font-exo2'
                   >
                     {message}
                   </p>
                 </div>
                     <h3 
-                      className=' text-green-800 text-base mb-2'
+                      className=' text-green-800 text-base mb-2 font-exo2'
                     >
                       Clique abaixo para selecionar um arquivo
                     </h3>
@@ -184,7 +184,7 @@ const PopUpEditalUpload = ({ isOpen, onClose }) => {
                         />
                         <label 
                           htmlFor="upload"
-                          className='flex cursor-pointer bg-green-600 text-white rounded-sm h-8 w-48 justify-center items-center text-sm font-semibold hover:bg-green-500'
+                          className='flex cursor-pointer bg-green-600 text-white rounded-sm h-8 w-48 justify-center items-center text-sm font-semibold hover:bg-green-500 font-exo2'
                         >
                           SELECIONE O ARQUIVO...
                         </label>
@@ -198,13 +198,13 @@ const PopUpEditalUpload = ({ isOpen, onClose }) => {
           className='absolute bottom-0 w-full h-8 flex justify-around font-roboto font-extrabold text-white'
         >
             <button 
-              className='w-2/4 bg-redfooter h-7'
+              className='w-2/4 bg-redfooter h-7 font-exo2'
               onClick={handleCancel}
             >
               VOLTAR
             </button>
             <button 
-              className='w-2/4 bg-footer h-7'
+              className='w-2/4 bg-footer h-7 font-exo2'
               onClick={handlePost}
             >
               POSTAR

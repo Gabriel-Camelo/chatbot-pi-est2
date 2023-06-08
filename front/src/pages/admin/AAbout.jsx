@@ -11,18 +11,19 @@ function AAbout(){
             <AMenu/>
             <Background/>
             <Exit/>
-            <div //Screen
-                className="absolute text-white flex flex-col justify-center items-center w-screen top-20"
+            <div //Título da página
+                className="absolute top-20 w-full text-center"
             >
-                <div //Título da página
-                    className="w-full text-center mb-32"
+                <h1 
+                    className="text-white font-oswald text-2xl mt-6"
                 >
-                    <h1 
-                        className="font-oswald text-2xl mt-6"
-                    >
-                        Olá Administrador(a), seja Bem-Vindo(a)!
-                    </h1>
-                </div>
+                    Olá Administrador(a), seja Bem-Vindo(a)!
+                </h1>
+            </div>
+
+            <div //Screen
+                className="absolute text-white flex  justify-center  w-full top-40"
+            >
 
                 <div //Container do painel central
                     className="w-full flex items-start justify-center"
@@ -38,7 +39,7 @@ function AAbout(){
                         >
                             Manuais
                         </h1>
-                        <div className="w-11/12 min-h-centralPanel text-justify mobile:text-lg desktop:text-2xl text-green-800 flex flex-col pt-16 pb-16 gap-5" p>
+                        <div className="w-11/12 min-h-centralPanel text-justify mobile:text-sm desktop:text-xl text-green-800 flex flex-col pt-16 pb-16 gap-5" p>
                             <p>
                             O sistema é uma ferramenta criada para auxiliar no processo de inscrição no programa de Manutenção Acadêmica disponibilizado pelo IFPE-Campus Belo Jardim. Nele é possível acessar aos editais divulgados, aos tutoriais disponíveis e conversar com assistente virtual, que tira dúvidas e facilita o entendimento do usuário. A abordagem do ChatBot Manu, como é chamado o assistente virtual, é voltada para a comunicação informal, com intuito de cativar o usuário e facilitar na hora tirar suas dúvidas.
                             </p>

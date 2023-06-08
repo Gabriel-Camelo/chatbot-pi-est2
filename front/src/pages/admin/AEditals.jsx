@@ -6,7 +6,6 @@ import SessionProtect from "../../components/Login/SessionProtect";
 import axios from "axios";
 import { RefreshContext } from "../../contexts/RefreshContext";
 import ManagementEdicts from "../../components/admin/ManagementEdicts";
-import { AuthContext } from "../../contexts/AuthContext";
 
 function AEditals(){
     const [ docs, setDocs ] = useState([ 
@@ -40,19 +39,19 @@ function AEditals(){
             <AMenu/>
             <Background/>
             <Exit/>
-            <div //Screen
-                className="absolute text-white flex flex-col justify-center items-center w-screen top-20"
+            <div //Título da página
+                className="absolute top-20 w-full text-center"
             >
-                <div //Título da página
-                    className="w-full text-center mb-32"
+                <h1 
+                    className="text-white font-oswald text-2xl mt-6"
                 >
-                    <h1 
-                        className="font-oswald text-2xl mt-6"
-                    >
-                        Olá Administrador(a), seja Bem-Vindo(a)!
-                    </h1>
-                </div>
+                    Olá Administrador(a), seja Bem-Vindo(a)!
+                </h1>
+            </div>
 
+            <div //Screen
+                className="absolute text-white flex  justify-center  w-full top-40"
+            >
                 <div //Container do painel central
                     className="w-full flex items-start justify-center"
                 >

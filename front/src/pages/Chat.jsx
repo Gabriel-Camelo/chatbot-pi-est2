@@ -79,20 +79,25 @@ function Chat () {
       if (selection.counter === 1) {
         setConversation(prevConversation => [
           ...prevConversation.slice(0, prevConversation.length - 2),
-          dialogueGen("robot", selection.text), validationGen()
+          dialogueGen("robot", selection.text), validationGen("Essa reposta foi útil?", true)
         ]);
       }else
-        setConversation([...conversation, dialogueGen("robot", selection.text), validationGen()]);
+        setConversation([...conversation, dialogueGen("robot", selection.text), validationGen("Essa reposta foi útil?", true)]);
     }
   }, [selection.text]);
 
   //Direciona segunda a validação (validationGen)
   useEffect(() => {
+
+    if (validation.result === 'continue') {
+      setConversation([...conversation, validationGen("Deseja perguntar algo mais?", false)]);
+    }
+
     if (validation.result === 'yes') {
-      setConversation([...conversation, dialogueGen("robot", "Fico em feliz em ter ajudado!")]);
+      setConversation([...conversation, dialogueGen("robot", "Fale  sobre sua dúvida:")]);
     } else if (validation.result === 'no'){
       setDefaultProps();
-      setConversation([...conversation, dialogueGen("robot", "Fale um pouco mais sobre seu problema, assim posso te ajudar melhor..")]);
+      setConversation([...conversation, dialogueGen("robot", "Obrigado por perguntar, espero ter ajudado de alguma forma! :)")]);
     }
   }, [validation.result]);
 
@@ -120,9 +125,9 @@ function Chat () {
     }
 
   //Finalizar a conversa ou iniciar um novo loop
-  const validationGen = () => {
+  const validationGen = (text, retoric) => {
     return (
-      <ValidateBlock setValidation={setValidation}/>
+      <ValidateBlock setValidation={setValidation} text={text} retoric={retoric} />
     );
   }
 
@@ -155,13 +160,13 @@ function Chat () {
         "
       >
       <header
-            className="bg-chat-header text-center text-white"
+            className="bg-chat-header text-center text-white font-exo2"
           > 
             Chat Bot 
           </header>
         <div
           ref={ref}
-          id="my-scrollable-div"
+          id="my-scrollable-div" 
           className="absolute w-full h-full center bg-white shadow-xl overflow-auto pb-16"
         >
           {conversation}

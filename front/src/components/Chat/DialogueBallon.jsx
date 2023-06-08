@@ -16,7 +16,7 @@ function DialogueBallon(props) {
         >
           <img
             src={`/img/chat/chatTail${side}.png`}
-            alt="cauda do balão"
+            alt="mensagem"
             className="w-1/4 h-1/2 z-0"
           />
         </div>

@@ -18,7 +18,7 @@ function NavBar(){
             
                 activeclassname="active"
                 to="/"           
-                className="w-32 h-8 flex items-center justify-center text-white" 
+                className="w-32 h-8 flex items-center justify-center text-white font-exo2" 
                 > 
                 
                 HOME
@@ -27,7 +27,7 @@ function NavBar(){
                 <NavLink 
                 activeclassname="active"
                 to="/sobre" 
-                className="w-32 h-8 flex items-center justify-center text-white" 
+                className="w-32 h-8 flex items-center justify-center text-white font-exo2" 
                 >
                 SOBRE
                 </NavLink>
@@ -67,7 +67,7 @@ function NavBar(){
                     to="/"
                 >
                     <li 
-                        className="p-2 text-center hover:bg-gray-200 cursor-pointer border-b"
+                        className="p-2 text-center hover:bg-gray-200 cursor-pointer border-b font-exo2"
                     >
                         HOME
                     </li>
@@ -78,9 +78,9 @@ function NavBar(){
                     to="/sobre"
                 >
                     <li 
-                        className="p-2 text-center hover:bg-gray-200 cursor-pointer border-b"
+                        className="p-2 text-center hover:bg-gray-200 cursor-pointer border-b font-exo2"
                     >
-                        SOBRE
+                        SOBRE 
                     </li>
                 </NavLink>
 
@@ -90,7 +90,7 @@ function NavBar(){
                     onClick={() => setCredentials({"email": 'logout',"password": 'logout'})}
                 >
                     <li 
-                        className="p-2 text-center hover:bg-gray-200 cursor-pointer"
+                        className="p-2 text-center hover:bg-gray-200 cursor-pointer font-exo2"
                     >
                         {!token.access_token || token.access_token === 'denied' ? 'LOGIN' : 'LOGOUT'}
                     </li>

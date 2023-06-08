@@ -62,21 +62,25 @@ const PopupAlert = ({ isOpen, onClose, id, type }) => {
       }}
     >
 
-      <div className='bg-redfooter w-full h-1/6 flex items-center justify-center text-white font-roboto font-bold text-lg'>
-        <h1>ALERTA!</h1>
+      <div className='bg-redfooter w-full h-1/6 flex items-center justify-center text-white font-exo2 font-bold text-lg '>
+        <h1>
+          ALERTA!
+        </h1>
       </div>
 
-      <div className='flex items-end pl-9 w-full h-3/6 text-lg'>
-        <h3>Tem certeza que deseja remover o conteúdo?</h3>
+      <div className='flex items-end pl-9 w-full h-3/6 text-lg font-exo2'>
+        <h3>
+          Tem certeza que deseja remover o conteúdo?
+        </h3>
       </div>
 
-      <div className=' w-full h-2/6 flex justify-around font-roboto font-extrabold text-white pt-4'>
+      <div className=' w-full h-2/6 flex justify-around font-roboto font-extrabold text-white pt-4 font-exo2'>
         <button className='w-2/6 bg-redfooter h-6'
           onClick={onClose}
         >
           NÃO
         </button>
-        <button className='w-2/6 bg-footer h-6'
+        <button className='w-2/6 bg-footer h-6 font-exo2'
           onClick={() => setToRemove(true)}
         >
           SIM

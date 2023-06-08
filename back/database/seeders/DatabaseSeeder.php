@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(SeedersPerguntasSeeder::class);
+        $this->call(VideosSeeder::class);
+        \App\Models\User::factory(1)->create();
+
 
         /* Ambiente de testes
         \App\Models\User::factory(10)->create();

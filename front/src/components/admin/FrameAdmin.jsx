@@ -12,25 +12,29 @@ function FrameAdmin(props) {
     <NavLink
       to={to}
     >
-      <button
+      <button //Frame
         className="transition-opacity duration-500 ease-in-out bg-green-500 transform hover:-translate-y-1 hover:scale-110 divHover "
       >
-        <div
+        <div //Container dentro do Frame
           className="w-56 h-60 text-black bg-gray-100 flex flex-col items-center justify-center shadow-lg transition delay-300 duration-300 ease-in-out"
         >
-          <img
+          <img //Imagem
             src={`${src}`}
             alt={`${alt}`}
             className={`${className}`}
           />
-          <h2
+          <h2 //Título
             className="text-green-900 mt-3"
           >
             {tittle}
           </h2>
           
         </div>
-        <p className="phover bg-footer">Editar</p>
+        <p //Bottão dinâmico
+          className="text-white bg-footer mobile:block desktop:hidden desktop:hover:block font-exo2"
+        >
+          Editar
+        </p>
       </button>
     </NavLink>
   );

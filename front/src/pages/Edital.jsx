@@ -23,18 +23,19 @@ function Edital(){
         <>
             <NavBar/>
             <Background/>
-            <div //Screen
-                className="absolute text-white flex flex-col justify-center items-center w-screen top-20"
+            <div //Título da página
+                className="absolute top-20 w-full text-center"
             >
-                <div //Título da página
-                    className="w-full text-center mb-32"
+                <h1 
+                    className="text-white font-oswald text-2xl mt-6"
                 >
-                    <h1 
-                        className="font-oswald text-2xl mt-6"
-                    >
-                        Aproveite nossos tutoriais!
-                    </h1>
-                </div>
+                    Aproveite nossos tutoriais!
+                </h1>
+            </div>
+
+            <div //Screen
+                className="absolute text-white flex  justify-center  w-full top-40"
+            >
 
                 <div //Container do painel central
                     className="w-full flex items-start justify-center"
@@ -46,7 +47,7 @@ function Edital(){
                         "
                     >
                         <h1 //Cabeçalho do painel
-                            className="w-11/12 flex justify-center h-11 items-center font-robot text-footer border-b-2 border-b-green-600"
+                            className="w-11/12 flex justify-center h-11 items-center font-robot text-footer border-b-2 border-b-green-600 font-exo2"
                         >
                             Editais
                         </h1>

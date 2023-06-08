@@ -1,15 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-function Frame(props) {
-  const { src } = props;
-  const { alt } = props;
-  const { className } = props;
-  const { tittle } = props;
-  const { to } = props;
+function Frame({src, alt, className, tittle, to}) {
+  const [ mouseEnter, setMouseEnter ] = useState(null);
 
   return (
     <NavLink
+      onMouseEnter={() => setMouseEnter(true)}
+      onMouseLeave={() => setMouseEnter(false)}
       to={to}
     >
       <div
@@ -36,7 +34,15 @@ function Frame(props) {
             </h2>
         
           </div>
-          <p className="phover bg-footer">Acessar</p>
+          <div
+            className={`${mouseEnter ? "flex" : "mobile:flex desktop:hidden"}`}
+          >
+            <p
+              className="w-full bg-footer font-exo2"
+            >
+              Acessar
+            </p>
+          </div>
         </button>
       </div>
     </NavLink>

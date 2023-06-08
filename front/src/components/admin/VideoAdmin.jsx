@@ -1,27 +1,17 @@
 import React, { useEffect, useState } from "react";
-import "./VideoAdmin.css"; 
 import PopupAlert from "./PopupAlert";
 import PopupEdit from './PopupEdit';
 
 
 function VideoAdmin({link, unique}) {
   const [ idValue, setIdValue ] = useState(null);
-
-  const [showButtons, setShowButtons] = useState(false);
+  const [ mouseEnter, setMouseEnter ] = useState(null);
 
   useEffect(() => {
     if (unique !== undefined) {
       setIdValue(unique)
     }
   }, [unique]);
-  
-  const handleMouseEnter = () => {
-    setShowButtons(true);
-  };
-
-  const handleMouseLeave = () => {
-    setShowButtons(false);
-  };
 
   //PopUp Alert
   const [modalOpen, setModalOpen] = useState(false);
@@ -49,11 +39,11 @@ function VideoAdmin({link, unique}) {
   };
 
   return (
-    <div
-      className="relative h-full w-4/5 m-auto pb-5 pt-5"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div 
+        onMouseEnter={() => setMouseEnter(true)}
+        onMouseLeave={() => setMouseEnter(false)}
+        className="relative h-full w-4/5 m-auto pb-5 pt-5"
+    > 
       {isLoading && <div className="text-2xl text-center  text-letter">Carregando...</div>}
       <iframe
         className="h-full w-full"
@@ -64,9 +54,9 @@ function VideoAdmin({link, unique}) {
       >
       </iframe>
 
-      {(showButtons && !isLoading) && (
+      {(!isLoading) && (
         <div 
-          className="buttons-wrapper"
+          className={`${mouseEnter ? "flex flex-row" : "mobile:flex desktop:hidden  flex-row"}`}
         >
           <button 
             className="bg-redfooter text-white  w-2/4 h-8 font-exo2"

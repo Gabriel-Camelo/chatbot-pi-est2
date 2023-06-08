@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 function FramManual({document, id}){
     const [ idValue, setIdValue ] = useState(null);
     const [download, setDownload] = useState(null);
+    const [ mouseEnter, setMouseEnter ] = useState(null);
     const [view, setView] = useState(null);
 
     useEffect(() => {
@@ -38,7 +39,9 @@ function FramManual({document, id}){
             "
         > 
         <span 
-            className="editalhover w-3/4 h-3/4"
+            onMouseEnter={() => setMouseEnter(true)}
+            onMouseLeave={() => setMouseEnter(false)}
+            className="w-3/4 h-3/4"
         >
             <div 
                 className="bg-green-400 h-5/6 flex items-center justify-center"
@@ -54,7 +57,7 @@ function FramManual({document, id}){
                     className=" w-4/6"
                 >
                     <h2 
-                        className="text-green-950 mt-3 "
+                        className="text-green-950 mt-3 font-roboto"
                     >
                         {`${document}`}
                     </h2>
@@ -83,9 +86,9 @@ function FramManual({document, id}){
 
             </div>
             <button 
-                onClick={handleView}
-                className="w-full h-1/4 bg-footer bottom-0 font-exo2 text-white"
-            >
+                    onClick={handleView}
+                    className={`font-exo2 items-center justify-center w-full h-1/4 bg-footer bottom-0 font-exo2 ${mouseEnter ? "block" : "mobile:block desktop:hidden"}`}
+                >
                 Visualizar
             </button>
         </span>

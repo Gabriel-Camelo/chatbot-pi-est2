@@ -98,7 +98,7 @@ const PopupEdit = ({ isOpen, onClose, id, type }) => {
     >
 
       <div 
-        className='bg-green-600 w-full h-9 flex items-center justify-center text-white font-roboto font-bold text-lg'
+        className='bg-green-600 w-full h-9 flex items-center justify-center text-white font-exo2 font-bold text-lg'
       >
         <h1>
           EDITE O MATERIAL
@@ -112,7 +112,7 @@ const PopupEdit = ({ isOpen, onClose, id, type }) => {
           className='w-full h-1/2 flex flex-row'
         >
             <div 
-              className='w-4/12 h-full bg-white flex items-center justify-end desktop:text-xl mobile:text-sm'
+              className='w-4/12 h-full bg-white flex items-center justify-end desktop:text-xl mobile:text-sm font-exo2'
             >
                 Título Atual:
             </div>
@@ -131,7 +131,7 @@ const PopupEdit = ({ isOpen, onClose, id, type }) => {
           className='w-full h-2/6 flex flex-row'
         >
             <div 
-              className='w-4/12 h-full bg-white flex items-center justify-end desktop:text-xl mobile:text-sm'
+              className='w-4/12 h-full bg-white flex items-center justify-end desktop:text-xl mobile:text-sm font-exo2'
             >
                 Novo Título:
             </div>
@@ -168,13 +168,13 @@ const PopupEdit = ({ isOpen, onClose, id, type }) => {
         className=' w-full h-2/6 bottom-0 flex items-end justify-around font-roboto font-extrabold text-white pt-4'
       >
         <button 
-          className='w-1/2 bg-redfooter h-7'
+          className='w-1/2 bg-redfooter h-7 font-exo2'
           onClick={handleCancel}
         >
           VOLTAR
         </button>
         <button 
-          className='w-1/2 bg-footer h-7'
+          className='w-1/2 bg-footer h-7 font-exo2'
           onClick={() => setToUpdate(true)}
         >
           SALVAR

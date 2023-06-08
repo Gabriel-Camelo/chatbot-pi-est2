@@ -1,6 +1,6 @@
 import React from "react";
 
-function ValidateBlock(props) {
+function ValidateBlock({text, setValidation, retoric}) {
   return (
     <div
       className="h-7 text-gray-800 text-center mb-16 text-sm
@@ -12,7 +12,7 @@ function ValidateBlock(props) {
         className="flex flex-col gap-4"
       >
         <p>
-          Essa reposta foi útil?
+          {text}
         </p>
         <div
           className="flex flex-row justify-center  gap-2"
@@ -21,7 +21,8 @@ function ValidateBlock(props) {
             type="button"
             className="bg-gray-800 rounded-md text-white pl-1 pr-1"
             onClick={() => {
-              props.setValidation({'result': 'yes'});
+              if (!retoric) setValidation({'result': 'yes'}); 
+              else  setValidation({'result': 'continue'});      
             }}
           >
           Sim
@@ -30,7 +31,8 @@ function ValidateBlock(props) {
             type="button"
             className="bg-gray-800 rounded-md text-white pl-1 pr-1"
             onClick={() => {
-              props.setValidation({'result': 'no'});
+              if (!retoric) setValidation({'result': 'no'});
+              else  setValidation({'result': 'continue'});      
             }}
           >
           Não

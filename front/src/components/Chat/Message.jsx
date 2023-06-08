@@ -11,10 +11,12 @@ function Message(props) {
   const user = <div data-testid="user-avatar" className="flex flex-row-reverse items-start gap-8 pr-4 pt-4 pb-4" ><User/><DialogueBallon side="right" text={text}/></div>;
 
   return (
-    <>
+    <span
+      role="status" aria-live="assertive"
+    >
       { (type === "robot")  && robot }
       { (type === "user")  && user }
-    </>
+    </span>
   );
 }
 

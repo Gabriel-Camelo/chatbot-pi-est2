@@ -8,40 +8,40 @@ function AMenu(){
 
 
     return (
-        <>
-            <nav 
+        <>  
+            <nav //Barra de navegação do administrador 
             className="w-screen flex justify-center h-8 items-center top-3 absolute divide-x-2 font-roboto
             mobile:hidden
             desktop:flex
             "
             >
-                <NavLink 
+                <NavLink //Redirecionador para tela inicial 
                 activeclassname="active"
                 to="/admin/"           
-                className="w-32 h-8 flex items-center justify-center text-white" 
+                className="w-32 h-8 flex items-center justify-center text-white font-exo2" 
                 > 
                 
                 HOME
                 </NavLink>
 
-                <NavLink 
+                <NavLink //Redirecionador para tela sobre o sistema
                 activeclassname="active"
                 to="/admin/about" 
-                className="w-32 h-8 flex items-center justify-center text-white" 
+                className="w-32 h-8 flex items-center justify-center text-white font-exo2" 
                 >
                 SOBRE
                 </NavLink>
             </nav>
-            <button
+            <button //Menu Hamburguer (Visivel quando mobile)
                 className="absolute w-10 top-3 right-4 
                 desktop:hidden
                 mobile:flex
                 "
-                onClick={() => {
+                onClick={() => { //controlador da imagem do menu (quando aberto ou fechado)
                     (menu === 'opened' ? setMenu('closed') : setMenu('opened'))
                 }}
             >   
-                {menu === 'opened' && 
+                {menu === 'opened' &&  
                     <img
                         className="w-8"
                         src="/img/crossIcon.svg"
@@ -58,8 +58,8 @@ function AMenu(){
                 </img>
                 }
             </button>
-            {menu === 'opened' && (
-            <ul 
+            {menu === 'opened' && ( 
+            <ul //Opções no menu
                 className="absolute w-24 top-12 right-4 bg-white border shadow-md text-menu-hamburguer flex flex-col h-auto z-50
                 mobile:block
                 desktop:hidden
@@ -70,7 +70,7 @@ function AMenu(){
                     to="/admin/"
                 >
                     <li 
-                        className="p-2 text-center hover:bg-gray-200 cursor-pointer"
+                        className="p-2 text-center hover:bg-gray-200 cursor-pointer font-exo2"
                     >
                         HOME
                     </li>
@@ -81,7 +81,7 @@ function AMenu(){
                     to="/admin/about"
                 >
                     <li 
-                        className="p-2 text-center hover:bg-gray-200 cursor-pointer"
+                        className="p-2 text-center hover:bg-gray-200 cursor-pointer font-exo2"
                     >
                         SOBRE
                     </li>
@@ -93,7 +93,7 @@ function AMenu(){
                     onClick={() => setCredentials({"email": 'logout',"password": 'logout'})}
                 >
                     <li 
-                        className="p-2 text-center hover:bg-gray-200 cursor-pointer"
+                        className="p-2 text-center hover:bg-gray-200 cursor-pointer font-exo2"
                     >
                         SAIR
                     </li>

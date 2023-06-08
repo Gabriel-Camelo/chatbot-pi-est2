@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PopupAlert from './PopupAlert';
 import PopupEdit from './PopupEdit';
 import axios from 'axios';
@@ -6,8 +6,9 @@ import axios from 'axios';
 function ManagementEdicts({ document, unique }){
     const [ idValue, setIdValue ] = useState(null);
     const [download, setDownload] = useState(null);
+    const [ mouseEnter, setMouseEnter ] = useState(null);
 
-    useEffect(() => {
+    useEffect(() => { 
         if (unique !== undefined) {
             setIdValue(unique)
         }
@@ -45,17 +46,19 @@ function ManagementEdicts({ document, unique }){
     }
 
     return(
-        <div 
+        <div //Frame
+            onMouseEnter={() => setMouseEnter(true)}
+            onMouseLeave={() => setMouseEnter(false)}
             className="h-40 w-full m-auto flex items-center justify-center"
-        > 
-        <span 
-            className="editalhover w-4/5 h-4/6"
         >
-            <div 
+        <span 
+            className="w-4/5 h-4/6"
+        >
+            <div //Container dentro do Frame
                 className="bg-green-400 h-5/6 flex items-center justify-center"
             >
                 <div>
-                    <img 
+                    <img //Imagem
                         src="/img/Pdf-Icon.svg" 
                         alt="Icon PDF"
                         className="w-16"
@@ -65,15 +68,15 @@ function ManagementEdicts({ document, unique }){
                 <div 
                     className=" w-4/6"
                 >
-                    <h2 
-                        className="text-green-950 mt-3 "
+                    <h2 //Título
+                        className="text-green-950 mt-3 font-roboto"
                     >
                         {`${document}`}
                     </h2>
                     <div 
                         className="flex"
                     >
-                        <div 
+                        <div //Botão de download
                             className="w-full flex justify-end items-end"
                         >
                         {download && (
@@ -95,7 +98,7 @@ function ManagementEdicts({ document, unique }){
 
             </div>
             <div 
-                className="flex flex-row h-8"
+                className={`h-8 ${mouseEnter ? "flex flex-row" : "mobile:flex desktop:hidden  flex-row"}`}
             >
                 <button 
                     className="w-full bg-redfooter bottom-0 font-exo2 text-white"
@@ -110,13 +113,13 @@ function ManagementEdicts({ document, unique }){
                     Editar
                 </button>
 
-                <PopupAlert 
+                <PopupAlert //frame dinâmico de remoção
                     isOpen={modalOpen} 
                     onClose={handleCloseModal}
                     id={idValue}
                     type={"editais"}
                 />
-                <PopupEdit 
+                <PopupEdit //frame dinâmico de edição
                     isOpen={editOpen} 
                     onClose={fecharEdit} 
                     id={idValue}

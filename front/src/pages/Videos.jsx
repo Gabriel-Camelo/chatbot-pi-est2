@@ -30,19 +30,19 @@ function VidAndImages(){
         <>
             <NavBar/>
             <Background/>
-            <div //Screen
-                className="absolute text-white flex flex-col justify-center items-center w-screen top-20"
+            <div //Título da página
+                className="absolute top-20 w-full text-center"
             >
-                <div //Título da página
-                    className="w-full text-center mb-32"
+                <h1 
+                    className="text-white font-oswald text-2xl mt-6"
                 >
-                    <h1 
-                        className="font-oswald text-2xl mt-6"
-                    >
-                        Aproveite nossos tutoriais!
-                    </h1>
-                </div>
+                    Aproveite nossos tutoriais!
+                </h1>
+            </div>
 
+            <div //Screen
+                className="absolute text-white flex  justify-center  w-full top-40"
+            >
                 <div //Container do painel central
                     className="w-full flex items-start justify-center"
                 >
@@ -56,7 +56,7 @@ function VidAndImages(){
                             className="w-full"
                         >
                             <button
-                                className={`w-1/2 h-11 items-center font-robot text-footer border border-b-green-600 ${
+                                className={`w-1/2 h-11 items-center font-exo2 text-footer border border-b-green-600 ${
                                         activeTab === "videos"
                                         ? "bg-footer text-white"
                                         : "bg-slate-200 text-gray-900"
@@ -66,7 +66,7 @@ function VidAndImages(){
                                 VÍDEOS
                             </button>
                             <button
-                                className={`w-1/2 h-11 items-center font-robot text-footer border border-b-green-600 ${
+                                className={`w-1/2 h-11 items-center font-exo2 text-footer border border-b-green-600 ${
                                         activeTab === "manuals"
                                         ? "bg-footer text-white"
                                         : "bg-slate-200 text-gray-900"

@@ -6,33 +6,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
 
-.divHover .phover{
-    display: none;
-}
-
-.divHover:hover p{
-    display: block;
-}
-
-.phover{
-    height: 1.5rem;
-    display: flex;
-    justify-items: center;
-    text-align: center;
-    position: fixed;
-    color: white;
-    bottom: 0;
-    width: 100%;
-}
-
-span button{
-    display: none;
-}
-
-span:hover button{
-    display: block;
-}
-
 
 .buttondown{
     display: block;

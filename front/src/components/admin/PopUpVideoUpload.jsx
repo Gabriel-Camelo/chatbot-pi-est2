@@ -119,13 +119,13 @@ const PopUpVideoUpload = ({ isOpen, onClose }) => {
         </h1>
       </div>
       <div 
-        className='flex items-center justify-center flex-col w-full gap-2 h-full text-lg'
+        className='flex items-center justify-start mt-32 flex-col w-full gap-2 h-full text-lg'
       >
          <div 
         className='w-full h-2/12 flex flex-row'
       >
             <div 
-              className='h-full flex items-center justify-end
+              className='h-full flex items-center justify-end font-roboto
               mobile:text-sm mobile:w-3/12
               desktop:text-xl desktop:w-2/12
               '
@@ -151,7 +151,7 @@ const PopUpVideoUpload = ({ isOpen, onClose }) => {
         className='w-full h-2/12 flex flex-row'
       >
             <div 
-              className='h-full flex items-center justify-end
+              className='h-full flex items-center justify-end font-roboto
               mobile:text-sm mobile:w-3/12
               desktop:text-xl desktop:w-2/12
               '
@@ -174,11 +174,13 @@ const PopUpVideoUpload = ({ isOpen, onClose }) => {
                 </form>
             </div>
         </div> 
+
+        {/* Para enviar um video do computador do usuário
         <div 
           className='w-full h-1/10 flex flex-row'
         >
             <div 
-              className='h-full w-full flex items-center justify-center
+              className='h-full w-full flex items-center justify-center font-roboto
               mobile:text-sm
               desktop:text-xl              
               '
@@ -189,7 +191,7 @@ const PopUpVideoUpload = ({ isOpen, onClose }) => {
         </div>
         
         <div 
-              className='w-full h-1/10 flex items-center justify-center
+              className='w-full h-1/10 flex items-center justify-center font-roboto
               mobile:text-sm
               desktop:text-xl              
               '
@@ -244,7 +246,8 @@ const PopUpVideoUpload = ({ isOpen, onClose }) => {
                 
                 </div>
             </div>
-        </div>
+        </div>*/}
+
         <div 
           className='absolute bottom-0 w-full h-8 flex justify-around font-roboto font-extrabold text-white'
         >
